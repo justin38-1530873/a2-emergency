@@ -122,17 +122,14 @@ days.to.break <- (summer.break-today)
 #  "Hello, my name is {name} and I'm {age} years old. In {N} days I'll be {new.age}" 
 # You should utilize your `MakeIntroduction()` function from Part 1!
 MakeBirthdayIntro <- function(name,age,bday) {
-  bday <- as.Date(bday, format='%B %d')
-  new.age <- age + 1
-  dateDiff <- bday - today
-  if (dateDiff < 0) {
-    dateDiff <- (dateDiff + 365) }
-  bDaySentence <- paste(MakeIntroduction(name,age), ". In ", dateDiff," days I'll be ", new.age,sep = "")
+  bday <- as.Date(bday, format = '%B %d, %Y')
+  dateDiff <- bday- today
+  bDaySentence <- paste(MakeIntroduction(name,age), ". In ", dateDiff," days I'll be ", age+1, sep = "")
   return(bDaySentence)
 }
 
 # Create a variable `my.bday.intro` by calling your `MakeBirthdayIntro` function and passing in `my.name`, `my.age`, and your birthday.
-my.bday.intro <- MakeBirthdayIntro(my.name,my.age,'September 16')
+my.bday.intro <- MakeBirthdayIntro(my.name,my.age,'September 16, 2017')
 
 # Challenge ------------------------------------------------------------------
 # Write a function `RemoveDigits` that will remove all digits (i.e., 0 through 9) from all elements in a *vector of strings*. 
@@ -143,4 +140,3 @@ RemoveDigits <- function(element) {
 # Demonstrate that your approach is successful by passing a vector of courses to your function
 # For example, RemoveDigits(c("INFO 201", "CSE 142"))
 courses <- RemoveDigits(c("INFO 201","INFO 101","MATH 126"))
-             
